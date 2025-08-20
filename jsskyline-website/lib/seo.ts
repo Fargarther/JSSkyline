@@ -16,7 +16,7 @@ const defaultMetadata = {
   description: 'Professional drone services and studio photography delivering perspective with purpose. Aerial marketing, inspections, mapping, legal documentation, and studio photography.',
   keywords: 'drone services, aerial photography, real estate photography, construction inspection, mapping, legal documentation, studio photography',
   image: '/og-image.jpg',
-  url: 'https://jsskyline.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://jsskyline.vercel.app',
   type: 'website' as const,
 };
 
@@ -51,7 +51,7 @@ export function generateSEO({
       address: false,
       telephone: false,
     },
-    metadataBase: new URL('https://jsskyline.com'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://jsskyline.vercel.app'),
     alternates: {
       canonical: seo.url,
     },

@@ -47,7 +47,7 @@ interface ImageObject {
 export function generateOrganizationSchema(): Organization {
   return {
     name: 'JSSKYLINE',
-    url: 'https://jsskyline.com',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://jsskyline.vercel.app',
     logo: 'https://jsskyline.com/logo.png',
     description: 'Professional drone services and studio photography delivering perspective with purpose. Aerial marketing, inspections, mapping, legal documentation, and studio photography.',
     contactPoint: {
