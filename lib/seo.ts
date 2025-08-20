@@ -6,7 +6,7 @@ interface SEOProps {
   keywords?: string;
   image?: string;
   url?: string;
-  type?: 'website' | 'article' | 'service';
+  type?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
 }
@@ -69,7 +69,7 @@ export function generateSEO({
         },
       ],
       locale: 'en_US',
-      type: seo.type,
+      type: seo.type as 'website' | 'article',
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
     },

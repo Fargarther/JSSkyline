@@ -117,19 +117,12 @@ export function generateImageSchema(image: {
   };
 }
 
-export function generateJSONLD(data: any) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': getSchemaType(data),
-          ...data
-        })
-      }}
-    />
-  );
+export function generateJSONLD(data: any): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': getSchemaType(data),
+    ...data
+  });
 }
 
 function getSchemaType(data: any): string {
