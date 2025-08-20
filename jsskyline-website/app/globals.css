@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-anton: 'Anton', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background-primary text-neutral-50 font-body antialiased;
+    overflow-x: hidden;
+  }
+  
+  * {
+    @apply border-neutral-800;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-neutral-50;
+  }
+}
+
+@layer components {
+  .hero-text {
+    @apply font-display text-hero leading-[0.9] tracking-tight text-neutral-50;
+  }
+  
+  .display-lg {
+    @apply font-display text-display-lg leading-tight tracking-tight text-neutral-50;
+  }
+  
+  .display-md {
+    @apply font-display text-display-md leading-tight tracking-tight text-neutral-50;
+  }
+  
+  .display-sm {
+    @apply font-display text-display-sm leading-tight tracking-tight text-neutral-50;
+  }
+  
+  .body-lg {
+    @apply text-lg leading-relaxed text-neutral-200;
+  }
+  
+  .body-md {
+    @apply text-base leading-relaxed text-neutral-200;
+  }
+  
+  .body-sm {
+    @apply text-sm leading-relaxed text-neutral-300;
+  }
+  
+  .pinline {
+    @apply bg-orange-primary;
+    width: 2px;
+  }
+  
+  .pinline-horizontal {
+    @apply bg-orange-primary;
+    height: 1px;
+  }
+  
+  .section-padding {
+    @apply py-section px-container;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto px-container;
+  }
+  
+  .btn-primary {
+    @apply bg-orange-primary hover:bg-orange-dark text-neutral-950 font-medium px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply border border-orange-primary text-orange-primary hover:bg-orange-primary hover:text-neutral-950 font-medium px-6 py-3 rounded-lg transition-all duration-300;
+  }
+  
+  .btn-ghost {
+    @apply text-neutral-200 hover:text-orange-primary font-medium px-6 py-3 rounded-lg transition-all duration-300;
+  }
+  
+  .card {
+    @apply bg-background-secondary border border-neutral-800 rounded-xl p-6 hover:border-neutral-700 transition-all duration-300;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-orange-primary to-orange-light bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .animate-pinline {
+    animation: pinlineGrow var(--duration, 0.3s) ease-out;
+  }
+  
+  .clip-path-reveal {
+    clip-path: inset(0 0 100% 0);
+  }
+  
+  .clip-path-revealed {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .hero-reverse-scroll {
+    position: static !important;
+    height: auto !important;
+  }
+  
+  .hero-content {
+    transform: none !important;
+    clip-path: none !important;
+  }
+}

@@ -1,0 +1,238 @@
+Prompt: Build the JSSKYLINE Website (Next.js, Dark-Mode, Animated, Responsive)
+
+SYSTEM / ROLE
+You are a senior brand designer + full-stack engineer. Produce a production-ready website for JSSKYLINE using Next.js 14 (App Router) + React + TypeScript + Tailwind + Framer Motion. Follow the brand system and animation specs below exactly. When something is unspecified, propose a sensible default and state it.
+
+1) Brand Inputs (use verbatim)
+
+Name: JSSKYLINE (preferred printed form: JS SKYLINE)
+
+Primary tagline: PERSPECTIVE WITH PURPOSE.
+
+Mission (Shakespearean flavor): Where art and utility ascend together—mounted aloft where men may see.
+
+Identity: Hybrid imaging brand; drone-first (Mavic 4 Pro visuals, inspections, mapping, remote monitoring) + studio (macro/food/product), stitched macro panoramas, 12K capability.
+
+Voice: Expert, approachable, outcome-oriented.
+
+Color Palette (dark theme)
+
+Primary Blue #3EB6F1
+
+Accent Blue #0B4C8B
+
+Sky Light Blue #B8ECFF
+
+White #FFFFFF
+
+Ashen Black #1C1C1E (background)
+
+Highlight Orange #FF9023 (thin pinlines/CTAs only)
+
+Logo / Mark Guidance
+
+All-caps, tall condensed sans. Oversized “JS S”; remainder “KYLINE” at ~1/3 size, baseline-aligned.
+
+Thin orange pinline around large letterforms (target 1.0–1.5% of cap height; 0.6–0.8% at small sizes).
+
+Secondary mark: Mavic 4 Pro silhouette at 45° low angle, rounded gimbal, no overhanging sensors.
+
+Add subtle white edge highlight on dark if needed.
+
+Typography
+
+Display/Headlines: Tall, condensed sans (choose one: Anton / Oswald / Bebas Neue) via next/font.
+
+Body/UI: Inter or Montserrat via next/font.
+
+Headline tracking +10–30; body tracking 0–10.
+
+Presentation context: Must look superb on 4K 16:9 (INNOCN portable monitor) and on mobile.
+
+2) Objectives & Constraints
+
+Make the drone identity obvious, while also showcasing macro/food/product and fine-art work.
+
+Dark-mode first: Sky Light Blue text on Ashen Black, Primary/Accent Blue for emphasis, Orange pinline for borders/CTAs.
+
+Animated and responsive across breakpoints; respect prefers-reduced-motion.
+
+Performance: Lighthouse ≥ 95 (Perf/Access/Best/SEO).
+
+Accessibility: WCAG 2.2 AA; keyboard nav; focus states; alt text; adequate contrast.
+
+SEO & Sharing: Proper <title>/meta, canonical, sitemap.xml, robots.txt, OpenGraph/Twitter cards, and JSON-LD (Organization, Service, VideoObject, ImageObject).
+
+Compliance: FAA-aware language where applicable; privacy + terms pages.
+
+3) Signature Animation — “Reverse-Scroll” Hero (Required)
+
+Goal: When the user scrolls down, the hero behaves like a reverse reveal:
+
+The content appears from the top (revealed downward) while a thin vertical pinline on the right edge fills upward (from bottom to top).
+
+The section is sticky/pinned for ~200–220vh to give room for the sequence.
+
+Implementation requirements (Framer Motion):
+
+Use useScroll + useTransform.
+
+Container: sticky top-0 full-viewport; parent section spans ~200–220vh.
+
+Reveal: Use a clip-path mask whose top inset goes from ~100% → 0% as scroll progresses. Optionally add a small downward y translation easing to the content.
+
+Pinline: Absolutely positioned 1px vertical rule at right; inner bar’s height animates from 0% → 100%, anchored to bottom. Color: #FF9023.
+
+Video background: 4K orbit shot (muted, looped) with static poster fallback + subtle gradient overlay for legibility.
+
+Reduced motion: Disable clip-mask animation; show fully revealed hero; pinline remains static at 100%.
+
+No inverted OS scrolling—we simulate reverse reveal via animation; scrolling direction remains standard.
+
+4) Information Architecture
+
+Top-level nav: Home, Services (menu), Portfolio, About, Contact
+
+Services subpages (1 page each):
+
+Aerial Marketing & Real Estate
+
+Inspections & Construction Monitoring (incl. Teams/Zoom workflow)
+
+Mapping & Site Visualization (orthos, overlays)
+
+Legal & Investigative (evidence-ready imagery, metadata, chain-of-custody notes)
+
+Studio: Macro / Food / Product / Fine-Art
+
+Other pages: Case Studies (optional), FAQ, Blog/Notes (optional), Privacy, Terms.
+
+5) Page Copy (write on-brand text)
+
+Home (hero first-screen)
+
+H1: “JSSKYLINE”
+
+Subline: “Aerial-Crafted Imaging for Land, Table, and Industry.”
+
+Tagline lockup: “PERSPECTIVE WITH PURPOSE.”
+
+Primary CTAs: Explore Services / Request a Quote
+
+Below the fold: 4 value pillars (Elevated Vision / Detailed Craft / Technical Rigor / Client-Ready Delivery) + teaser portfolio strip + testimonial carousel + CTA banner.
+
+Services pages (each):
+
+Short intro paragraph (benefit-driven).
+
+“Where it helps” bullets (use-cases by industry).
+
+Deliverables list + process overview (scope → plan → capture → post → handoff).
+
+2–3 mini case blurbs (problem → approach → result).
+
+CTA panel.
+
+Portfolio:
+
+Filter chips: Aerial / Macro / Food / Fine-Art / Legal / Mapping.
+
+Support MP4/HLS video, WebP/AVIF stills, and before/after slider.
+
+Each item: title, short brief, services used, equipment tags, outcome.
+
+About:
+
+Brand story; Shakespeare line; approach; highlight gear + safety/compliance.
+
+Contact:
+
+Multi-step form: name, company, email/phone, service interest (multi-select), location/date window, message, optional file upload.
+
+reCAPTCHA v3 (or anti-bot); API route stub + success/fail states.
+
+Write all copy in JSSKYLINE’s voice: confident, cinematic, practical, outcome-oriented.
+
+6) Tech Stack & Coding Standards (generate code)
+
+Next.js 14 (App Router) + React + TS
+
+Tailwind CSS with design tokens for palette + typography
+
+Framer Motion for hero and micro-interactions; optional Lenis for smooth scroll
+
+next/font for Display (Anton/Oswald/Bebas) + Body (Inter/Montserrat)
+
+Next/Image with AVIF/WebP, lazy loading; priority for hero
+
+Route transitions using Framer Motion
+
+Contact API route that logs payload (and explains how to add email/webhook later)
+
+Performance: code-split galleries; server components where possible; preconnect/preload hero media; image sizes tuned per breakpoint.
+
+Accessibility: semantic landmarks, logical tab order, visible focus rings, alt text examples; animation obeys prefers-reduced-motion.
+
+7) What to Deliver (as your final answer)
+
+Return all files as path-labeled code blocks, plus a short README. Include:
+
+Project tree (folders/files).
+
+Design tokens: /app/theme/tokens.ts exporting colors, spacing, fonts.
+
+Global styles: /app/globals.css (Tailwind base + small utilities).
+
+App Router pages:
+
+/app/page.tsx (Home with the reverse-scroll hero)
+
+/app/services/(category)/page.tsx for each service
+
+/app/portfolio/page.tsx (with filterable gallery stub)
+
+/app/about/page.tsx
+
+/app/contact/page.tsx (multi-step form)
+
+/app/api/contact/route.ts (POST handler that logs form data)
+
+Core components in /components:
+
+HeroReverse.tsx (implements the pinned section, clip-mask reveal, upward pinline)
+
+Header.tsx, Footer.tsx, Section.tsx, CTA.tsx, Card.tsx, Gallery.tsx, BeforeAfter.tsx
+
+RouteTransition.tsx (page transitions)
+
+LogoLockup.tsx (optional)
+
+SEO utilities: /lib/seo.ts and /lib/schema.ts with JSON-LD helpers (Organization, Service, VideoObject, ImageObject).
+
+Static files: /public/video/hero.mp4 (placeholder path), /public/poster/hero.jpg, /public/img/* samples.
+
+Config: tailwind.config.ts, postcss.config.js, tsconfig.json, next.config.mjs.
+
+Meta files: sitemap.xml, robots.txt.
+
+README.md with build/run/deploy instructions (Vercel) and how to replace hero media.
+
+Important:
+
+The reverse-scroll hero must be fully implemented and ready to run.
+
+Use the orange pinline #FF9023 at 1–2px for the hero progress and thin section dividers.
+
+Respect brand palette and typography everywhere.
+
+Include sample copy that fits the brand; avoid lorem ipsum.
+
+8) Acceptance Criteria
+
+Dark-mode site, responsive from mobile → 4K.
+
+Reverse-scroll hero works: content reveals from the top; orange pinline fills upward; sticky section spans ~200–220vh; graceful reduced-motion fallback.
+
+Pages and components compile and run with pnpm i && pnpm dev (or npm).
+
+Lighthouse ≥ 95 across categories on a typical project page.
